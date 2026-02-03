@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Share2, Download } from 'lucide-react';
+import { X, Share2 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
 interface QRModalProps {
@@ -10,27 +9,6 @@ interface QRModalProps {
 }
 
 const QRModal = ({ isOpen, onClose, url }: QRModalProps) => {
-  const downloadQR = () => {
-    const svg = document.getElementById("qr-code-svg");
-    if (svg) {
-      const svgData = new XMLSerializer().serializeToString(svg);
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      const img = new Image();
-      img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx?.drawImage(img, 0, 0);
-        const pngFile = canvas.toDataURL("image/png");
-        const downloadLink = document.createElement("a");
-        downloadLink.download = "victor-martinez-qr.png";
-        downloadLink.href = pngFile;
-        downloadLink.click();
-      };
-      img.src = "data:image/svg+xml;base64," + btoa(svgData);
-    }
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -48,37 +26,42 @@ const QRModal = ({ isOpen, onClose, url }: QRModalProps) => {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="fixed inset-0 m-auto w-full max-w-sm h-fit z-[70] p-4"
           >
-            <div className="bg-surface border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-primary"></div>
+            <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden ring-1 ring-white/5">
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
               
+              {/* Background ambient glow */}
+              <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/20 rounded-full blur-[50px] pointer-events-none"></div>
+              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-purple-500/20 rounded-full blur-[50px] pointer-events-none"></div>
+
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10 hover:bg-white/10 p-1 rounded-full"
               >
                 <X size={20} />
               </button>
 
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
-                  <Share2 size={24} />
+              <div className="flex flex-col items-center text-center relative z-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl flex items-center justify-center text-white mb-6 border border-white/10 shadow-lg backdrop-blur-md">
+                  <Share2 size={28} className="text-primary drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
                 </div>
                 
-                <h3 className="text-xl font-bold mb-2">Compartir Perfil</h3>
-                <p className="text-gray-400 text-sm mb-6">
-                  Escanea este código QR para abrir el portafolio en otro dispositivo o compartirlo.
+                <h3 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">Compartir</h3>
+                <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+                  Escanea para llevarte mi portafolio<br/>a cualquier parte.
                 </p>
 
-                <div className="bg-white p-4 rounded-xl mb-6">
+                <div className="bg-white p-3 rounded-2xl mb-8 shadow-[0_0_50px_-10px_rgba(255,255,255,0.15)] ring-4 ring-white/5">
                   <QRCodeSVG 
                     id="qr-code-svg"
                     value={url} 
                     size={200}
                     level="H"
-                    includeMargin={true}
+                    includeMargin={false}
                   />
                 </div>
 
-                <div className="text-xs text-gray-500 font-mono bg-black/30 px-3 py-1 rounded-full mb-6 border border-white/5 break-all">
+                <div className="text-xs text-gray-400/80 font-mono bg-black/20 px-4 py-2 rounded-full border border-white/5 break-all select-all hover:bg-white/5 transition-colors cursor-pointer">
                   {url}
                 </div>
 

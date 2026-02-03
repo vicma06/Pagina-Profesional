@@ -28,7 +28,7 @@ const Projects = () => {
     },
     {
       title: "Ingeniero IA de F1",
-      description: "Asistente inteligente en desarrollo para estrategias de carrera en F1. Utiliza algoritmos de predicción y análisis de datos históricos para sugerir paradas en pits.",
+      description: "Asistente inteligente en desarrollo para estrategias de carrera en el videojuego F1 25. Utiliza algoritmos de predicción y análisis de datos históricos para sugerir paradas en pits.",
       tags: ["Python", "Google AI Studio", "Ollama", "Machine Learning"],
       status: "En Desarrollo",
       links: { github: undefined, demo: undefined },

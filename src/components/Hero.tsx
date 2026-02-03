@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Link } from 'react-scroll';

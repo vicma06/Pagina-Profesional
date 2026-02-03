@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Globe, Cpu, Wrench } from 'lucide-react';
+import { Code, Globe, Cpu, Wrench } from 'lucide-react';
 
 const Skills = () => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
