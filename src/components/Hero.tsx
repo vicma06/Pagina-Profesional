@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background pt-16">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background pt-32 md:pt-16">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] opacity-20 animate-pulse" />

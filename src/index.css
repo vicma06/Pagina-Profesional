@@ -50,9 +50,18 @@
     background: rgba(10, 10, 10, 0.3);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: none;
   }
   
+  /* Helper for desktop responsive variant */
+  @media (min-width: 768px) {
+    .md\:nav-glass {
+      background: rgba(10, 10, 10, 0.3);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+  }
+
   .formal-gradient {
     @apply bg-gradient-to-br from-surface to-background;
   }

@@ -76,7 +76,7 @@ const Projects = () => {
                 </div>
               )}
               
-              <div className="p-8 flex-1 flex flex-col">
+              <div className="p-8 flex-1 flex flex-col relative z-40">
                 <div className="mb-6 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
                   <project.icon className="w-6 h-6" />
                 </div>
